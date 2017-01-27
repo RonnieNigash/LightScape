@@ -79,6 +79,12 @@ TEST(DriveLEDs, OutOfBoundsNoChange)
 	BYTES_EQUAL(0, virtualLEDStrip);
 }
 
+TEST(DriveLEDs, QueryStateOutOfBounds)
+{
+	DriveLEDs_TurnAllOn();
+	CHECK_FALSE(DriveLEDs_IsOn(65));
+}
+
 TEST(DriveLEDs, QueryLEDStateOff)
 {
 	DriveLEDs_TurnAllOn();
