@@ -67,3 +67,8 @@ void DriveLEDs_TurnOff(uint16_t LEDNumber)
 	writeToHardware();
 }
 
+void DriveLEDs_TurnAllOn(void)
+{
+	LEDState = (uint16_t)ALL_LEDS_ON;
+	writeToHardware();
+}

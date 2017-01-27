@@ -48,7 +48,15 @@ TEST(DriveLEDs, TurnOnSingleLED)
 TEST(DriveLEDs, TurnOffSingleLED)
 {
 	DriveLEDs_TurnOn(1);
-	DriveLEDs_TurnOn(2);
 	DriveLEDs_TurnOff(1);
-	LONGS_EQUAL(2, virtualLEDStrip);
+	BYTES_EQUAL(0, virtualLEDStrip);
 }
+
+TEST(DriveLEDs, MultipleLEDsOnOff)
+{
+	DriveLEDs_TurnAllOn();
+	DriveLEDs_TurnOff(2);
+	BYTES_EQUAL(0xfffd, virtualLEDStrip);
+}
+
+
