@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "DriveLEDs.h"
 
 static uint16_t * addressOfLEDs;
@@ -8,7 +9,7 @@ enum {
 	ALL_LEDS_ON = ~0,
 	ALL_LEDS_OFF = ~ALL_LEDS_ON,
 	FIRST_LED = 1,
-	LAST_LED = 50
+	LAST_LED = 64
 };
 
 static void writeToHardware(void)
@@ -71,4 +72,18 @@ void DriveLEDs_TurnAllOn(void)
 {
 	LEDState = (uint16_t)ALL_LEDS_ON;
 	writeToHardware();
+}
+
+bool DriveLEDs_IsOn(uint16_t LEDNumber)
+{
+	if (LEDOutOfBounds(LEDNumber)) {
+		return false;
+	}
+
+	return LEDState & convertLEDNumberToBit(LEDNumber);
+}
+
+bool DriveLEDs_IsOff(uint16_t LEDNumber)
+{
+	return !DriveLEDs_IsOn(LEDNumber);
 }

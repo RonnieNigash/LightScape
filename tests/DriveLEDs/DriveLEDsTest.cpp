@@ -59,4 +59,30 @@ TEST(DriveLEDs, MultipleLEDsOnOff)
 	BYTES_EQUAL(0xfffd, virtualLEDStrip);
 }
 
+TEST(DriveLEDs, LastAndFirstLEDs)
+{
+	DriveLEDs_TurnOn(1);
+	DriveLEDs_TurnOn(64);
+	BYTES_EQUAL(0x8001, virtualLEDStrip);
+}
+
+TEST(DriveLEDs, QueryLEDStateOn)
+{
+	CHECK_FALSE(DriveLEDs_IsOn(3));
+	DriveLEDs_TurnOn(6);
+	CHECK_TRUE(DriveLEDs_IsOn(6));
+}
+
+TEST(DriveLEDs, OutOfBoundsNoChange)
+{
+	DriveLEDs_TurnOn(1000);
+	BYTES_EQUAL(0, virtualLEDStrip);
+}
+
+TEST(DriveLEDs, QueryLEDStateOff)
+{
+	DriveLEDs_TurnAllOn();
+	DriveLEDs_TurnOff(6);
+	CHECK_TRUE(DriveLEDs_IsOff(6));
+}
 
