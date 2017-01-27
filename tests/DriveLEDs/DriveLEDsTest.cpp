@@ -38,3 +38,17 @@ TEST(DriveLEDs, LEDsOffAfterInitialization)
 	DriveLEDs_Create(&virtualLEDStrip);
 	BYTES_EQUAL(0, virtualLEDStrip);
 }
+
+TEST(DriveLEDs, TurnOnSingleLED)
+{
+	DriveLEDs_TurnOn(1);
+	BYTES_EQUAL(1, virtualLEDStrip);
+}
+
+TEST(DriveLEDs, TurnOffSingleLED)
+{
+	DriveLEDs_TurnOn(1);
+	DriveLEDs_TurnOn(2);
+	DriveLEDs_TurnOff(1);
+	LONGS_EQUAL(2, virtualLEDStrip);
+}

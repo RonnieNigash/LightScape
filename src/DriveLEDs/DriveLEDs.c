@@ -26,3 +26,44 @@ void DriveLEDs_Create(uint16_t * address)
 void DriveLEDs_Destroy()
 {
 }
+
+static uint16_t convertLEDNumberToBit(uint16_t LEDNumber)
+{
+	return (uint16_t)(1 << (LEDNumber - 1));
+}
+
+static uint16_t LEDOutOfBounds(uint16_t LEDNumber)
+{
+	return (LEDNumber < FIRST_LED) || (LEDNumber > LAST_LED);
+}
+
+static void setLEDImageBit(uint16_t LEDNumber)
+{
+	LEDState |= convertLEDNumberToBit(LEDNumber);
+}
+
+void DriveLEDs_TurnOn(uint16_t LEDNumber)
+{
+	if (LEDOutOfBounds(LEDNumber)) {
+		return;
+	}
+
+	setLEDImageBit(LEDNumber);
+	writeToHardware();
+}
+
+static void clearLEDImageBit(uint16_t LEDNumber)
+{
+	LEDState &= ~(convertLEDNumberToBit(LEDNumber));
+}
+
+void DriveLEDs_TurnOff(uint16_t LEDNumber)
+{
+	if (LEDOutOfBounds(LEDNumber)) {
+		return;
+	}
+
+	clearLEDImageBit(LEDNumber);
+	writeToHardware();
+}
+
