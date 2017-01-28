@@ -104,11 +104,16 @@ bool DriveLEDs_IsOff(uint16_t LEDNumber)
 
 void DriveLEDs_SetColor(uint16_t LEDNumber, uint8_t r, uint8_t g, uint8_t b)
 {
+	if (LEDOutOfBounds(LEDNumber)) {
+		return;
+	}
+
 	colors[LEDNumber].red = r;
 	colors[LEDNumber].green = g;
 	colors[LEDNumber].blue = b;
 }
 
+// assumes LEDNumber is in bounds
 LED DriveLEDs_ReadColor(uint16_t LEDNumber)
 {
 	return colors[LEDNumber];

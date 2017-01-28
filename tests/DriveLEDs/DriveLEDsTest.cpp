@@ -117,3 +117,4 @@ TEST(DriveLEDs, TestBoundaryColors)
 	CHECK_TRUE(lastLED.green == 255);
 	CHECK_TRUE(lastLED.blue == 255);
 }
+
