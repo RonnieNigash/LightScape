@@ -12,6 +12,8 @@ enum {
 	LAST_LED = 64
 };
 
+static LED colors[LAST_LED];// = { {0, 0, 0} };
+
 static void writeToHardware(void)
 {
 	*addressOfLEDs = LEDState;
@@ -21,6 +23,10 @@ void DriveLEDs_Create(uint16_t * address)
 {
 	addressOfLEDs = address;
 	LEDState = (uint16_t)ALL_LEDS_OFF;
+	uint8_t i;
+	for (i = 0; i < LAST_LED; i++) {
+		DriveLEDs_SetColor(i, 0, 0, 0);
+	}
 	writeToHardware();
 }
 
@@ -50,6 +56,7 @@ void DriveLEDs_TurnOn(uint16_t LEDNumber)
 	}
 
 	setLEDImageBit(LEDNumber);
+
 	writeToHardware();
 }
 
@@ -74,6 +81,7 @@ void DriveLEDs_TurnAllOn(void)
 	writeToHardware();
 }
 
+
 bool DriveLEDs_IsOn(uint16_t LEDNumber)
 {
 	if (LEDOutOfBounds(LEDNumber)) {
@@ -86,4 +94,16 @@ bool DriveLEDs_IsOn(uint16_t LEDNumber)
 bool DriveLEDs_IsOff(uint16_t LEDNumber)
 {
 	return !DriveLEDs_IsOn(LEDNumber);
+}
+
+void DriveLEDs_SetColor(uint16_t LEDNumber, uint8_t r, uint8_t g, uint8_t b)
+{
+	colors[LEDNumber].red = r;
+	colors[LEDNumber].green = g;
+	colors[LEDNumber].blue = b;
+}
+
+LED DriveLEDs_ReadColor(uint16_t LEDNumber)
+{
+	return colors[LEDNumber];
 }
