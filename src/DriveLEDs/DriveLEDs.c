@@ -12,18 +12,18 @@ enum {
 	LAST_LED = 64
 };
 
-static LED colors[LAST_LED];// = { {0, 0, 0} };
+static LED colors[LAST_LED];
 
 static void writeToHardware(void)
 {
 	*addressOfLEDs = LEDState;
 }
 
-static void fillStrip(uint8_t r, uint8_t g, uint8_t b)
+static void fillStrip(uint8_t g, uint8_t r, uint8_t b)
 {
 	uint16_t i;
 	for (i = 0; i <= LAST_LED-FIRST_LED; i++) {
-		DriveLEDs_SetColor(i, r, g, b);
+		DriveLEDs_SetColor(i, g, r, b);
 	}
 }
 
@@ -102,14 +102,14 @@ bool DriveLEDs_IsOff(uint16_t LEDNumber)
 	return !DriveLEDs_IsOn(LEDNumber);
 }
 
-void DriveLEDs_SetColor(uint16_t LEDNumber, uint8_t r, uint8_t g, uint8_t b)
+void DriveLEDs_SetColor(uint16_t LEDNumber, uint8_t g, uint8_t r, uint8_t b)
 {
 	if (LEDOutOfBounds(LEDNumber)) {
 		return;
 	}
 
-	colors[LEDNumber].red = r;
 	colors[LEDNumber].green = g;
+	colors[LEDNumber].red = r;
 	colors[LEDNumber].blue = b;
 }
 

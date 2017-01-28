@@ -95,8 +95,8 @@ TEST(DriveLEDs, QueryLEDStateOff)
 TEST(DriveLEDs, TestAllColorsOff)
 {
 	LED firstLED = DriveLEDs_ReadColor(1);
-	CHECK_TRUE(firstLED.red == 0);
 	CHECK_TRUE(firstLED.green == 0);
+	CHECK_TRUE(firstLED.red == 0);
 	CHECK_TRUE(firstLED.blue == 0);
 }
 
@@ -104,8 +104,8 @@ TEST(DriveLEDs, TestSetColors)
 {
 	DriveLEDs_SetColor(1, 255, 255, 255);
 	LED firstLED = DriveLEDs_ReadColor(1);
-	CHECK_TRUE(firstLED.red == 255);
 	CHECK_TRUE(firstLED.green == 255);
+	CHECK_TRUE(firstLED.red == 255);
 	CHECK_TRUE(firstLED.blue == 255);
 }
 
@@ -113,8 +113,8 @@ TEST(DriveLEDs, TestBoundaryColors)
 {
 	DriveLEDs_TurnAllOn();
 	LED lastLED = DriveLEDs_ReadColor(63);
-	CHECK_TRUE(lastLED.red == 255);
 	CHECK_TRUE(lastLED.green == 255);
+	CHECK_TRUE(lastLED.red == 255);
 	CHECK_TRUE(lastLED.blue == 255);
 }
 
