@@ -108,3 +108,12 @@ TEST(DriveLEDs, TestSetColors)
 	CHECK_TRUE(firstLED.green == 255);
 	CHECK_TRUE(firstLED.blue == 255);
 }
+
+TEST(DriveLEDs, TestBoundaryColors)
+{
+	DriveLEDs_TurnAllOn();
+	LED lastLED = DriveLEDs_ReadColor(63);
+	CHECK_TRUE(lastLED.red == 255);
+	CHECK_TRUE(lastLED.green == 255);
+	CHECK_TRUE(lastLED.blue == 255);
+}

@@ -19,14 +19,19 @@ static void writeToHardware(void)
 	*addressOfLEDs = LEDState;
 }
 
+static void fillStrip(uint8_t r, uint8_t g, uint8_t b)
+{
+	uint16_t i;
+	for (i = 0; i <= LAST_LED-FIRST_LED; i++) {
+		DriveLEDs_SetColor(i, r, g, b);
+	}
+}
+
 void DriveLEDs_Create(uint16_t * address)
 {
 	addressOfLEDs = address;
 	LEDState = (uint16_t)ALL_LEDS_OFF;
-	uint8_t i;
-	for (i = 0; i < LAST_LED; i++) {
-		DriveLEDs_SetColor(i, 0, 0, 0);
-	}
+	fillStrip(0, 0, 0);
 	writeToHardware();
 }
 
@@ -78,6 +83,7 @@ void DriveLEDs_TurnOff(uint16_t LEDNumber)
 void DriveLEDs_TurnAllOn(void)
 {
 	LEDState = (uint16_t)ALL_LEDS_ON;
+	fillStrip(255, 255, 255);
 	writeToHardware();
 }
 
