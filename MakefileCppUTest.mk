@@ -15,6 +15,7 @@ CPP_PLATFORM = g++
 
 SRC_DIRS = \
 	$(PROJECT_HOME_DIR)/src/DriveLEDs \
+	$(PROJECT_HOME_DIR)/src/GatherColors \
 
 TEST_SRC_DIRS = \
 	tests\
