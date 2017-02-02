@@ -25,6 +25,7 @@ INCLUDE_DIRS =\
   .\
   $(CPPUTEST_HOME)/include\
   $(PROJECT_HOME_DIR)/include/DriveLEDs\
+  $(PROJECT_HOME_DIR)/include/GatherColors\
   
 CPPUTEST_WARNINGFLAGS += -Wall -Werror -Wswitch-default -Wswitch-enum -Wno-keyword-macro -Wno-reserved-id-macro -Wno-unused-parameter
 
