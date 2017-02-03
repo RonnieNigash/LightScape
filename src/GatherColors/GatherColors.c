@@ -4,7 +4,7 @@
 #include <string.h>
 #include "GatherColors.h"
 
-int GatherColors() {
+int GatherColors(char* buffer) {
 
 	char *currentWorkingDirectory;
 	char bufferCWD[1024];
@@ -14,8 +14,6 @@ int GatherColors() {
 	char *python = "python ";
 	char *script = "/src/GatherColors/GatherColorsPy.py";
 
-	printf("%s\n", currentWorkingDirectory);
-
 	char *argument = malloc( strlen(script) + strlen(currentWorkingDirectory) + 1 );
 	strcpy(argument, currentWorkingDirectory);
 	strcat(argument, script);
@@ -24,10 +22,7 @@ int GatherColors() {
 	strcpy(command, python);
 	strcat(command, argument);
 
-	printf("%s\n", command);
-	
 
-	char buffer[128];
 	FILE *fd;
 
 	if (( fd = popen(command, "r")) == NULL ) {
@@ -36,7 +31,6 @@ int GatherColors() {
 	}
 
 	while (fgets(buffer, 128, fd) != NULL ) {
-		printf("Output:\t%s", buffer);
 	}
 
 	if ( pclose(fd) ) {
