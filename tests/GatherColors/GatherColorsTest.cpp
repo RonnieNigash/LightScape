@@ -8,6 +8,7 @@ extern "C" {
 
 TEST_GROUP(GatherColors)
 {
+	char buffer[128];
 	void setup()
 	{
 	}
@@ -20,6 +21,14 @@ TEST_GROUP(GatherColors)
 
 TEST(GatherColors, RunsGatherColorsScript)
 {
-	int returnVal = GatherColors();
+	int returnVal = GatherColors(buffer);
 	BYTES_EQUAL(0, returnVal);
+}
+
+TEST(GatherColors, FillsBuffer)
+{
+	int returnVal = GatherColors(buffer);
+	BYTES_EQUAL(0, returnVal);
+	CHECK_FALSE(buffer == NULL);
+	printf("%s\n", buffer);
 }
