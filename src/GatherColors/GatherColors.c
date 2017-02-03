@@ -44,6 +44,8 @@ int GatherColors() {
 		return -1;
 	}
 
+
+	free(argument);
 	free(command);
 
 	return 0;
