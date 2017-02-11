@@ -9,6 +9,7 @@ def generate_GRB():
     return [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
 
 resolution = [1680, 1050]
+size_polygons = (120, 100)
 
 file_directory = path.realpath(__file__).rstrip("/main.py")
 
@@ -19,4 +20,13 @@ fill_canvas = ImageDraw.Draw(wallpaper)
 
 wallpaper.save(output_file) 
 
-print(generate_GRB())
+colors = []
+
+for i in range(0, 2):
+    colors.append(generate_GRB())
+
+number_polygons_horiz = (resolution[0] / size_polygons[0])
+number_polygons_vertical = (resolution[1] / size_polygons[1])
+
+
+
