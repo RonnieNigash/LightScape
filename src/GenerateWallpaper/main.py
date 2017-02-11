@@ -9,7 +9,7 @@ def generate_GRB():
     return [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
 
 resolution = [1680, 1050]
-size_polygons = (120, 100)
+size_shapes = (120, 100)
 
 file_directory = path.realpath(__file__).rstrip("/main.py")
 
@@ -25,8 +25,8 @@ colors = []
 for i in range(0, 2):
     colors.append(generate_GRB())
 
-number_polygons_horiz = (resolution[0] / size_polygons[0])
-number_polygons_vertical = (resolution[1] / size_polygons[1])
+number_shapes = (resolution[0] / size_shapes[0])
+number_shapes = (resolution[1] / size_shapes[1])
 
 
 
