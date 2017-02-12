@@ -43,4 +43,6 @@ num_shapes_vertical = ceil((RESOLUTION[1] / SHAPE_SIZE[1]))
 
 structure_of_shapes = generate_structure(num_shapes_horizontal, num_shapes_vertical, SHAPE_SIZE, wallpaper.size)
 
+print(structure_of_shapes)
+
 wallpaper.save(output_file) 
