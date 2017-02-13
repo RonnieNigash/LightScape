@@ -9,7 +9,7 @@ import random
 from structure import Structure
 
 RESOLUTION = [1680, 1050]
-SHAPE_SIZE = (30, 25)
+SHAPE_SIZE = (60, 50)
 
 def generate_GRB():
     return [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
