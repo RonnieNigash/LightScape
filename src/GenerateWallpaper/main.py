@@ -36,4 +36,6 @@ structure_of_shapes = Structure(
         )
 structure_of_shapes.generate_struct()
 
+structure_of_shapes.populate_colors(colors[0], colors[1])
+
 wallpaper.save(output_file) 
