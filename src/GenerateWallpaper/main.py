@@ -5,7 +5,7 @@ from os import path
 from PIL import Image, ImageDraw
 from math import ceil
 import random
-import structure
+from structure import Structure
 
 RESOLUTION = [1680, 1050]
 SHAPE_SIZE = (120, 100)
@@ -34,8 +34,8 @@ structure_of_shapes = Structure(
         (num_shapes_horizontal, num_shapes_vertical),
         SHAPE_SIZE
         )
-structure_of_shapes.init()
+structure_of_shapes.generate_struct()
 
-generate_structure(num_shapes_horizontal, num_shapes_vertical, SHAPE_SIZE, wallpaper.size)
+print(structure_of_shapes.wallpaper_size)
 
 wallpaper.save(output_file) 
