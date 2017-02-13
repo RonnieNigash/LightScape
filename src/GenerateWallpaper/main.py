@@ -36,6 +36,4 @@ structure_of_shapes = Structure(
         )
 structure_of_shapes.generate_struct()
 
-print(structure_of_shapes.wallpaper_size)
-
 wallpaper.save(output_file) 
