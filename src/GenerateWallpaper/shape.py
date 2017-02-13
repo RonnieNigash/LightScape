@@ -1,4 +1,4 @@
-from random import uniform
+from random import uniform, randint 
 
 class Shape:
 
@@ -15,9 +15,7 @@ class Point:
         self.coords = coords
 
     def evolve(self):
-        x_delta = uniform(-1,1)
-        y_delta = uniform(-1,1)
+        x_delta = uniform(-1,1) * randint(1, 40)
+        y_delta = uniform(-1,1) * randint(1, 40)
 
         self.coords = (self.coords[0] + x_delta, self.coords[1] + y_delta)
-
-

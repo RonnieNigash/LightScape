@@ -4,11 +4,12 @@
 from os import path
 from PIL import Image, ImageDraw
 from math import ceil
+import subprocess, sys
 import random
 from structure import Structure
 
 RESOLUTION = [1680, 1050]
-SHAPE_SIZE = (120, 100)
+SHAPE_SIZE = (30, 25)
 
 def generate_GRB():
     return [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
@@ -39,5 +40,7 @@ structure_of_shapes.generate_struct()
 structure_of_shapes.populate_colors(colors[0], colors[1])
 
 structure_of_shapes.paint(fill_canvas)
+
+subprocess.call(["rm", output_file], stderr=subprocess.DEVNULL)
 
 wallpaper.save(output_file) 
