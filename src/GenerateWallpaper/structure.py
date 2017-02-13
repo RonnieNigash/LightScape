@@ -11,6 +11,10 @@ class Structure:
 
         self.points = {}
 
+    def paint(self, fill_canvas):
+        for shape in self.shapes:
+            shape.paint(fill_canvas)
+
     def in_bounds(self, point):
         pos_x = point.coords[0]
         pos_y = point.coords[1]

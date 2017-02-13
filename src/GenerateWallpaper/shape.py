@@ -6,6 +6,9 @@ class Shape:
         self.points = points
         self.color = color
 
+    def paint(self, fill_canvas):
+        fill_canvas.polygon([shape.coords for shape in self.points], self.color)
+
 class Point:
 
     def __init__(self, coords):
