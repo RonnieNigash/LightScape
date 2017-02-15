@@ -22,6 +22,8 @@ class Structure:
         pos_y = point.coords[1]
         return (pos_x != 0 and pos_y != 0 and pos_x < self.wallpaper_size[0] and pos_y < self.wallpaper_size[1])
 
+    def sort_shapes(self, shape):
+
     def populate_colors(self, first_color, second_color):
 
         rotate = random() * 2 * pi
