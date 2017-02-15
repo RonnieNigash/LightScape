@@ -23,6 +23,19 @@ class Structure:
         return (pos_x != 0 and pos_y != 0 and pos_x < self.wallpaper_size[0] and pos_y < self.wallpaper_size[1])
 
     def sort_shapes(self, shape):
+        x_pos, y_pos = 0, 0
+
+        for p in shape.points:
+            x_pos += p.coords[0]
+            y_pos += p.coords[0]
+
+        x_pos /= len(shape.points)
+        y_pos /= len(shape.points)
+
+        x_pos = int(x_pos)
+        y_pos = int(y_pos)
+
+        return (x_pos, y_pos)
 
     def populate_colors(self, first_color, second_color):
 
