@@ -1,4 +1,6 @@
 from shape import Shape, Point
+from math import pi, sin, cos
+from random import random
 
 class Structure:
 
@@ -21,6 +23,9 @@ class Structure:
         return (pos_x != 0 and pos_y != 0 and pos_x < self.wallpaper_size[0] and pos_y < self.wallpaper_size[1])
 
     def populate_colors(self, first_color, second_color):
+
+        rotate = random() * 2 * pi
+
         number_of_shapes = len(self.shapes)
 
         change_green = ( second_color[0] - first_color[0] ) / number_of_shapes
