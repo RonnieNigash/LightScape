@@ -41,6 +41,4 @@ structure_of_shapes.populate_colors(colors[0], colors[1])
 
 structure_of_shapes.paint(fill_canvas)
 
-subprocess.call(["rm", output_file], stderr=subprocess.DEVNULL)
-
 wallpaper.save(output_file) 
