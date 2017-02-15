@@ -40,6 +40,23 @@ class Structure:
         return (cos(rotation_angle) * x_pos) + (sin(rotation_angle) * y_pos)
 
     def populate_colors(self, first_color, second_color):
+        
+        def rotate_shapes(shape):
+            x_pos, y_pos = 0, 0
+
+            for p in shape.points:
+                x_pos += p.coords[0]
+                y_pos += p.coords[0]
+
+            x_pos /= len(shape.points)
+            y_pos /= len(shape.points)
+
+            x_pos = int(x_pos)
+            y_pos = int(y_pos)
+
+            rotation_angle = random() * 2 * pi
+
+            return (cos(rotation_angle) * x_pos) + (sin(rotation_angle) * y_pos)
 
         number_of_shapes = len(self.shapes)
 
@@ -49,7 +66,10 @@ class Structure:
 
         curr_color = first_color
 
-        for shape in self.shapes:
+        shape_list = sorted(self.shapes, key=rotate_shapes)
+
+#        for shape in self.shapes:
+        for shape in shape_list:
             curr_color_casted = (
                     int(curr_color[0]),
                     int(curr_color[1]),
