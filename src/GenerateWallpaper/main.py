@@ -9,14 +9,16 @@ import random
 from structure import Structure
 
 RESOLUTION = [1680, 1050]
-SHAPE_SIZE = (15, 13)
+#SHAPE_SIZE = (15, 13)
 
 def generate_GRB():
     return [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
 
 file_directory = path.realpath(__file__).rstrip("/main.py")
 
-for run in range(20, 30):
+for run in range(0, 10):
+
+    SHAPE_SIZE = (random.randint(1,100), random.randint(1,100))
     output_file = "background" + str(run) + ".png"
 
     wallpaper = Image.new("RGB", RESOLUTION, 0)
