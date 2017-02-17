@@ -3,6 +3,7 @@
 
 from os import path
 from PIL import Image, ImageDraw
+#from PyAgg import Draw, Brush, Pen
 from math import ceil
 import subprocess, sys
 import random
@@ -16,12 +17,13 @@ def generate_GRB():
 
 file_directory = path.realpath(__file__).rstrip("/main.py")
 
-for run in range(0, 10):
+for run in range(10, 20):
 
     SHAPE_SIZE = (random.randint(1,100), random.randint(1,100))
     output_file = "background" + str(run) + ".png"
 
     wallpaper = Image.new("RGB", RESOLUTION, 0)
+#    fill_canvas = Draw(wallpaper)
     fill_canvas = ImageDraw.Draw(wallpaper)
 
 
@@ -45,4 +47,3 @@ for run in range(0, 10):
     structure_of_shapes.paint(fill_canvas)
 
     wallpaper.save(output_file) 
-
