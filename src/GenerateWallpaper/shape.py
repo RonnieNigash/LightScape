@@ -8,7 +8,8 @@ class Shape:
         self.color = color
 
     def paint(self, fill_canvas):
-        fill_canvas.polygon([shape.coords for shape in self.points], self.color, outline="black")
+#        fill_canvas.polygon([shape.coords for shape in self.points], self.color, outline="black")
+        fill_canvas.polygon([shape.coords for shape in self.points], self.color)
 #        fill_canvas.polygon([shape.coords for shape in self.points], Brush(self.color), Pen('black')) # <- PyAgg library not supported in Python
 
 class Point:
