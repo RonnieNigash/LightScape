@@ -1,5 +1,5 @@
 from random import uniform, randint 
-#from PyAgg import Draw, Brush, Pen
+#from PyAgg import Draw, Brush, Pen # <- PyAgg library not supported in Python
 
 class Shape:
 
@@ -9,7 +9,7 @@ class Shape:
 
     def paint(self, fill_canvas):
         fill_canvas.polygon([shape.coords for shape in self.points], self.color, outline="black")
-#        fill_canvas.polygon([shape.coords for shape in self.points], Brush(self.color), Pen('black'))
+#        fill_canvas.polygon([shape.coords for shape in self.points], Brush(self.color), Pen('black')) # <- PyAgg library not supported in Python
 
 class Point:
 

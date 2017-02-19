@@ -3,7 +3,7 @@
 
 from os import path
 from PIL import Image, ImageDraw
-#from PyAgg import Draw, Brush, Pen
+#from PyAgg import Draw, Brush, Pen # <- PyAgg library not supported in Python3
 from math import ceil
 import subprocess, sys
 import random
@@ -23,9 +23,8 @@ for run in range(10, 20):
     output_file = "background" + str(run) + ".png"
 
     wallpaper = Image.new("RGB", RESOLUTION, 0)
-#    fill_canvas = Draw(wallpaper)
+#    fill_canvas = Draw(wallpaper) # <- PyAgg library not supported in Python3
     fill_canvas = ImageDraw.Draw(wallpaper)
-
 
     colors = []
 
