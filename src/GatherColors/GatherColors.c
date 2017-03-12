@@ -6,7 +6,6 @@
 
 int GatherColors(char* buffer)
 {
-
 	char *currentWorkingDirectory;
 	char bufferCWD[1024];
 
