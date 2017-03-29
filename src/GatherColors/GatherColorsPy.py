@@ -1,20 +1,30 @@
 from PIL import ImageGrab
 
-SCREEN_RESOLUTION = [1680, 1050]
-NUM_X_LEDS = 2
-NUM_Y_LEDS = 2
+NUM_LEDS = 120
+NUM_X_LEDS = (0.6)*NUM_LEDS
+NUM_Y_LEDS = (0.4)*NUM_LEDS
 
-width = SCREEN_RESOLUTION[0]
-height = SCREEN_RESOLUTION[1]
+img = ImageGrab.grab().convert('RGB')
+px = img.load()
 
-num_x_steps = (int) (width / NUM_X_LEDS)
-num_y_steps = (int) (height / NUM_Y_LEDS)
+width = img.size[0]
+height = img.size[1]
 
-screen_grab = []
+width_per_LED = (int) (width / NUM_X_LEDS)
+height_per_LED = (int) (height / NUM_Y_LEDS)
 
-for x in range(0, width, num_x_steps):
-    for y in range(0, height, num_y_steps):
-        screen_grab.append(ImageGrab.grab( bbox = (x, y, x+1, y+1) ))
+samples = []
 
-print ( screen_grab[0].getpixel( (0,0) ))
-print ( screen_grab[1].getpixel( (0,0) ))
+for x_top in range(0, width, width_per_LED):
+    samples.append(px[x_top,0])
+
+for x_bot in range(0, width, width_per_LED):
+    samples.append(px[x_top,height-1])
+
+for y_left in range(0, height, height_per_LED):
+    samples.append(px[0,y_left])
+
+for y_right in range(0, height, height_per_LED):
+    samples.append(px[width-1,y_right])
+
+print(samples)
