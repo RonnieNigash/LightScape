@@ -10,8 +10,8 @@ px = img.load()
 width = img.size[0]
 height = img.size[1]
 
-width_per_LED = (int) (width / NUM_X_LEDS)
-height_per_LED = (int) (height / NUM_Y_LEDS)
+width_per_LED = (int) (2 * (width / NUM_X_LEDS))
+height_per_LED = (int) (2 * (height / NUM_Y_LEDS))
 
 samples = []
 
